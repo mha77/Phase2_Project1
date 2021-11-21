@@ -3,6 +3,7 @@ package com.simplilearn.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -68,6 +69,9 @@ public class AddTeacher extends HttpServlet {
 		// STep5: Commit transaction and close sessoin
 		tx.commit();
 		session.close();
+		
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewTeachers.jsp");
+        dispatcher.forward(request, response);  
 	}
 
 }
