@@ -1,4 +1,4 @@
-<%@page import="com.simplilearn.entity.Teacher"%>
+<%@page import="com.simplilearn.entity.Subject"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="com.simplilearn.util.HibernateUtil"%>
@@ -12,30 +12,29 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 <a href="index.html">Back to Menu</a><br>
-<a href="HTML/addTeacher.html">Add Teacher</a><br>
+<a href="HTML/addSubject.html">Add Subject</a><br>
 
-<h1>The Following Teachers are listed</h1>
+<h1>The Following Subjects are listed</h1>
 <%
 	SessionFactory sf  = HibernateUtil.buildSessionFactory();
 	Session hibernateSession = sf.openSession();
-	List<Teacher> teachers = hibernateSession.createQuery("from Teacher").list();
+	List<Subject> subjects = hibernateSession.createQuery("from Subject").list();
 %>
 <table>
 <tr>
-<th>First Name </th>
-<th>Last Name </th>
+<th>Subject Name </th>
 </tr>
 	<%		
-		for(Teacher teacher : teachers){
+		for(Subject subject : subjects){
 			out.print("<tr>");	
-			out.print("<td>" + teacher.getName() + "</td>");
-			out.print("<td>" + teacher.getLname() + "</td>");
+			out.print("<td>" + subject.getName() + "</td>");
 			out.print("</tr>");	
 		}
 	%>
 </table>
+
+
 
 </body>
 </html>

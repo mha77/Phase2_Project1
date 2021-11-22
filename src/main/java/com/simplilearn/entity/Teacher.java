@@ -12,7 +12,7 @@ public class Teacher {
 
 	@Id
 	@GeneratedValue
-	private int id;
+	private int teacher_id;
 	
 	@Column(name="first_name")
 	private String name;
@@ -20,12 +20,12 @@ public class Teacher {
 	@Column(name="last_name")
 	private String lname;
 
-	public int getId() {
-		return id;
+	public int getTeacher_id() {
+		return teacher_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setTeacher_id(int teacher_id) {
+		this.teacher_id = teacher_id;
 	}
 
 	public String getName() {
