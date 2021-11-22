@@ -25,15 +25,29 @@
 <tr>
 <th>Name </th>
 <th>Last Name </th>
+<th>Assigned Class </th>
 </tr>
 	<%		
 		for(Student student : students){
 			out.print("<tr>");	
 			out.print("<td>" + student.getName() + "</td>");
 			out.print("<td>" + student.getFname() + "</td>");
+			out.print("<td>" + getClassName(student) + "</td>");
 			out.print("</tr>");	
 		}
 	%>
 </table>
+
+<%!
+	public String getClassName(Student student){
+	if (student.getClasses() == null){
+		return "no class assigned";
+	}
+	else{
+		return student.getClasses().getName();
+	}
+}
+
+%>
 </body>
 </html>
