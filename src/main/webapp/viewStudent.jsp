@@ -12,7 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="index.html">Back to Menu</a><br>
+<a href="index.html">Back to Main Menu</a><br>
 <a href="HTML/addStudent.html">Add Student</a><br>
 <a href="assignStudentToClass.jsp">Assign Student</a>
 

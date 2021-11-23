@@ -14,9 +14,9 @@
 </head>
 <body>
 
-<a href="index.html">Back to Menu</a><br>
+<a href="index.html">Back to Main Menu</a><br>
 <a href="HTML/addTeacher.html">Add Teacher</a><br>
-<a href="assignTeacherToSubject.jsp">Assign Teacher to Class</a><br>
+<a href="assignTeacherToSubject.jsp">Assign Teacher to Subject</a><br>
 
 <h1>The Following Teachers are listed</h1>
 <%

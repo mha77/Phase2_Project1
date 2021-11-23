@@ -13,9 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="index.html">Back to Menu</a><br>
+<a href="index.html">Back to Main Menu</a><br>
 <a href="HTML/addClasses.html">Add Class</a><br>
-<a href="assignSubjectToClass.jsp">Assign Class to Subject</a><br>
+<a href="assignSubjectToClass.jsp">Assign Subject to Class</a><br>
 
 <h1>The Following Classes are listed</h1>
 <%
