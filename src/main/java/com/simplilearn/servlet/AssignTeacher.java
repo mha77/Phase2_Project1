@@ -11,26 +11,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import com.simplilearn.entity.Classes;
 import com.simplilearn.entity.Student;
+import com.simplilearn.entity.Subject;
+import com.simplilearn.entity.Teacher;
 import com.simplilearn.util.HibernateUtil;
 
 /**
- * Servlet implementation class AssignStudent
+ * Servlet implementation class AssignTeacher
  */
-@WebServlet("/assignStudent")
-public class AssignStudent extends HttpServlet {
+@WebServlet("/assignTeacher")
+public class AssignTeacher extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AssignStudent() {
+    public AssignTeacher() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -52,9 +54,9 @@ public class AssignStudent extends HttpServlet {
 		
 		// Step 1: Get details , user has entered
 		String name = request.getParameter("name");
-		String[] nameList = name.split(" ");
+		String[] nameArray = name.split(" ");
 		//System.out.println("NameList: " + nameList);
-		String classes = request.getParameter("class");
+		String subject = request.getParameter("subject");
 				
 		// Step2: Create session
 		SessionFactory sf  = HibernateUtil.buildSessionFactory();
@@ -63,16 +65,15 @@ public class AssignStudent extends HttpServlet {
 		// Step 3: Begin Transaction
 		Transaction tx = session.beginTransaction();
 		
-		String hql_classes= "from Classes where name='" + classes + "'";
-		List<Classes> clas = session.createQuery(hql_classes).list();
+		String hql_teacher= "from Teacher where name='" + nameArray[0] + "'" + " and lname='" + nameArray[1] + "'";
+		List<Teacher> teachers = session.createQuery(hql_teacher).list();
 		
-		String hql_student = "update Student s set s.classes=:n where s.name=:sn and s.fname=:fn";
+		String hql_subject = "update Subject s set s.teacher=:n where s.name=:sn";
 		
-		Query<Student> query = session.createQuery(hql_student);
-		query.setParameter("n", clas.get(0));
-		query.setParameter("sn", nameList[0]);
-		query.setParameter("fn", nameList[1]);
-		
+		Query<Subject> query = session.createQuery(hql_subject);
+		query.setParameter("n", teachers.get(0));
+		query.setParameter("sn", subject);
+				
 		query.executeUpdate();
 
 		
@@ -80,7 +81,7 @@ public class AssignStudent extends HttpServlet {
 		tx.commit();
 		session.close();
 		
-		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewStudent.jsp");
+		RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/viewTeachers.jsp");
         dispatcher.forward(request, response); 
 	}
 

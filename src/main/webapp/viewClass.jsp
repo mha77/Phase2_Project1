@@ -1,3 +1,4 @@
+<%@page import="com.simplilearn.entity.Subject"%>
 <%@page import="org.hibernate.Session"%>
 <%@page import="com.simplilearn.entity.Classes"%>
 <%@page import="java.util.List"%>
@@ -13,7 +14,8 @@
 </head>
 <body>
 <a href="index.html">Back to Menu</a><br>
-<a href="HTML/addClasses.html">Add Subject</a><br>
+<a href="HTML/addClasses.html">Add Class</a><br>
+<a href="assignSubjectToClass.jsp">Assign Class to Subject</a><br>
 
 <h1>The Following Classes are listed</h1>
 <%
@@ -23,13 +25,29 @@
 %>
 <table>
 <tr>
-<th>Subject Name </th>
-</tr>
+<th>Class Name </th>
+<th>Subject Name</th>
+</tr>	
 	<%		
 		for(Classes clas : classes){
 			out.print("<tr>");	
 			out.print("<td>" + clas.getName() + "</td>");
-			out.print("</tr>");	
+						
+			StringBuffer buf = new StringBuffer();
+			boolean first = true;
+			for (Subject subject : clas.getSubjects()){
+				if(first== true){
+					buf.append("<td>" + subject.getName() + "</td>");
+					buf.append("</tr>");
+					first = false;
+				}else{
+					buf.append("<tr><td></td>");
+					buf.append("<td>" + subject.getName() + "</td>");
+					buf.append("</tr>");
+				}
+				
+			}
+			out.print(buf.toString());
 		}
 	%>
 </table>

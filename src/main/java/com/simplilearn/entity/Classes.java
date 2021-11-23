@@ -24,7 +24,25 @@ public class Classes {
 	
 	@OneToMany(cascade= CascadeType.ALL, mappedBy="classes")
 	private List<Student> students;
+	
+	@OneToMany(cascade= CascadeType.ALL, mappedBy="classes")
+	private List<Subject> subjects;
+	
+	public List<Student> getStudents() {
+		return students;
+	}
 
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
+
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
+	}
 
 	public int getClass_id() {
 		return class_id;

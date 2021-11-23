@@ -1,3 +1,4 @@
+<%@page import="com.simplilearn.entity.Subject"%>
 <%@page import="com.simplilearn.entity.Teacher"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Session"%>
@@ -15,6 +16,7 @@
 
 <a href="index.html">Back to Menu</a><br>
 <a href="HTML/addTeacher.html">Add Teacher</a><br>
+<a href="assignTeacherToSubject.jsp">Assign Teacher to Class</a><br>
 
 <h1>The Following Teachers are listed</h1>
 <%
@@ -26,13 +28,29 @@
 <tr>
 <th>First Name </th>
 <th>Last Name </th>
+<th>Assigned Class</th>
 </tr>
 	<%		
 		for(Teacher teacher : teachers){
 			out.print("<tr>");	
 			out.print("<td>" + teacher.getName() + "</td>");
 			out.print("<td>" + teacher.getLname() + "</td>");
-			out.print("</tr>");	
+			
+			StringBuffer buf = new StringBuffer();
+			boolean first = true;
+			for (Subject subject : teacher.getSubjects()){
+				if(first== true){
+					buf.append("<td>" + subject.getName() + "</td>");
+					buf.append("</tr>");
+					first = false;
+				}else{
+					buf.append("<tr><td></td><td></td>");
+					buf.append("<td>" + subject.getName() + "</td>");
+					buf.append("</tr>");
+				}
+				
+			}
+			out.print(buf.toString());
 		}
 	%>
 </table>

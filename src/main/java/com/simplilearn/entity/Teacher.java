@@ -1,9 +1,13 @@
 package com.simplilearn.entity;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +23,9 @@ public class Teacher {
 	
 	@Column(name="last_name")
 	private String lname;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="teacher")
+	private List<Subject> subjects;
 
 	public int getTeacher_id() {
 		return teacher_id;
@@ -43,5 +50,15 @@ public class Teacher {
 	public void setLname(String lname) {
 		this.lname = lname;
 	}
+
+	public List<Subject> getSubjects() {
+		return subjects;
+	}
+
+	public void setSubjects(List<Subject> subjects) {
+		this.subjects = subjects;
+	}
+
+			
 	
 }

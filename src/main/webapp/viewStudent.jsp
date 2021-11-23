@@ -14,6 +14,7 @@
 <body>
 <a href="index.html">Back to Menu</a><br>
 <a href="HTML/addStudent.html">Add Student</a><br>
+<a href="assignStudentToClass.jsp">Assign Student</a>
 
 <h1>The Following Students are listed</h1>
 <%
