@@ -1,4 +1,3 @@
-<%@page import="com.simplilearn.entity.Subject"%>
 <%@page import="com.simplilearn.entity.Classes"%>
 <%@page import="java.util.List"%>
 <%@page import="org.hibernate.Session"%>
@@ -15,19 +14,20 @@
 <body>
 <a href="index.html">Back to Main Menu</a><br>
 
-<h1>Assign a Subject to a Class</h1>
+<h1>Choose a Class for Report Page</h1>
 <%
 	SessionFactory sf  = HibernateUtil.buildSessionFactory();
 	Session hibernateSession = sf.openSession();
 	List<Classes> classes = hibernateSession.createQuery("from Classes").list();
-	List<Subject> subjects = hibernateSession.createQuery("from Subject").list();
 %>
-<form action="assignSubject" method="post">
+
+<form action="ClassReport.jsp" method="post">
 <table>
 <tr>
 <th>Class Name </th>
-<th>Subject Name </th>
+
 </tr>
+
 <tr>
 <td>
 <select name="class">
@@ -39,20 +39,9 @@
 %>
 </select>
 </td>
-
-<td>
-<select name="subject">
-<%
-	for (Subject subject : subjects){
-	out.print("<option>" + subject.getName());
-	out.print("</option>");
-	}
-%>
-</select>
-</td>
 </tr>
 </table>
-<input type="submit" value="Submit">
+	<input type="submit" value="Submit">
 </form>
 </body>
 </html>
