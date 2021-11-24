@@ -27,7 +27,7 @@
 <table>
 <tr>
 <th>Student Name </th>
-<th>Class Name </th>
+<th>Subject Name </th>
 </tr>
 <tr>
 <td>
